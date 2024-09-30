@@ -42,6 +42,7 @@ public class NestedFRames {
         frameMethods.switchToSpecificIFrame("frame1");
 
         WebElement childIframeElement = driver.findElement(By.id("Child Iframe"));
+        frameMethods.switchToSpecificIFrameByElement(childIframeElement);
 
         System.out.println(childIframeElement.getText());
     }
