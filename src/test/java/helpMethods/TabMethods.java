@@ -20,4 +20,8 @@ public class TabMethods {
     public void closeCurrentTab(){
         driver.close();
     }
+
+    public void quitTab(){
+        driver.quit();
+    }
 }
