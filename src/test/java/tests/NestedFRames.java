@@ -8,23 +8,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
+import sharedData.SharedData;
 
 import java.time.Duration;
 
-public class NestedFRames {
-    public WebDriver driver;
+public class NestedFRames extends SharedData {
+
 
     @Test
-
     public void metodaTest() {
-        // deschidem un browser
-        driver = new ChromeDriver();
-        //accesam un url
-        driver.get("https://demoqa.com/");
-        //facem browser-ul maximize
-        driver.manage().window().maximize();
-        //wait implicit
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         ElementMethods elementMethods = new ElementMethods(driver);
         FrameMethods frameMethods = new FrameMethods(driver);
@@ -41,7 +33,7 @@ public class NestedFRames {
 //        driver.switchTo().frame("frame1");
         frameMethods.switchToSpecificIFrame("frame1");
 
-        WebElement childIframeElement = driver.findElement(By.id("Child Iframe"));
+        WebElement childIframeElement = driver.findElement(By.tagName("p"));
         frameMethods.switchToSpecificIFrameByElement(childIframeElement);
 
         System.out.println(childIframeElement.getText());

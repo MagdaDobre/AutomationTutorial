@@ -8,40 +8,33 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AlertPage {
-        public WebDriver driver;
-        public ElementMethods elementMethods;
-        public AlertMethods alertMethods;
+public class AlertPage extends BasePage {
 
-        public AlertPage(WebDriver driver) {
-            this.driver = driver;
-            elementMethods = new ElementMethods(this.driver);
-            alertMethods = new AlertMethods(this.driver);
-            PageFactory.initElements(this.driver,this);
-        }
-
-        @FindBy(id = "alertButton")
-        public WebElement okAlertElement;
-
-        @FindBy(id = "timerAlertButton")
-        public WebElement timerAlertButtonElement;
-
-        @FindBy(id = "confirmButton")
-        public WebElement confirmAlertElement;
-
-        @FindBy(id = "promtButton")
-        public WebElement promtAlertElement;
-
-
-        public void dealAlertProcess(String text){
-            elementMethods.clickJSElement(okAlertElement);
-            alertMethods.acceptAlert();
-            elementMethods.clickJSElement(timerAlertButtonElement);
-            alertMethods.acceptAlert();
-            elementMethods.clickJSElement(confirmAlertElement);
-            alertMethods.dismissAlert();
-            elementMethods.clickJSElement(promtAlertElement);
-            alertMethods.fillAlert(text);
-        }
-
+    public AlertPage(WebDriver driver) {
+        super(driver);
     }
+
+    @FindBy(id = "alertButton")
+    public WebElement okAlertElement;
+
+    @FindBy(id = "timerAlertButton")
+    public WebElement timerAlertButtonElement;
+
+    @FindBy(id = "confirmButton")
+    public WebElement confirmAlertElement;
+
+    @FindBy(id = "promtButton")
+    public WebElement promtAlertElement;
+
+    public void dealAlertProcess(String text) {
+        elementMethods.clickJSElement(okAlertElement);
+        alertMethods.acceptAlert();
+        elementMethods.clickJSElement(timerAlertButtonElement);
+        alertMethods.acceptAlert();
+        elementMethods.clickJSElement(confirmAlertElement);
+        alertMethods.dismissAlert();
+        elementMethods.clickJSElement(promtAlertElement);
+        alertMethods.fillAlert(text);
+    }
+
+}

@@ -9,16 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class PracticeFormsTestPage {
-    public WebDriver driver;
-    public ElementMethods elementMethods;
-    public FrameMethods frameMethods;
+public class PracticeFormsTestPage extends BasePage {
 
     public PracticeFormsTestPage(WebDriver driver) {
-        this.driver = driver;
-        this.elementMethods = elementMethods;
-        this.frameMethods = frameMethods;
-        PageFactory.initElements(this.driver,this);
+        super(driver);
     }
 
     @FindBy(xpath = "//h5[text()= 'Forms']")
@@ -67,6 +61,8 @@ public class PracticeFormsTestPage {
     public List<WebElement> labelList;
     @FindBy(xpath = "//table[@class='table table-dark table-striped table-bordered table-hover']//td[2]")
     public List<WebElement> valuesList;
+
+
 
 
     public void clickFormsMenu() {
