@@ -18,6 +18,7 @@ public class FramesPage {
     public FramesPage(WebDriver driver) {
         this.driver = driver;
         elementMethods = new ElementMethods(this.driver);
+        frameMethods = new FrameMethods(driver);
         PageFactory.initElements(this.driver,this);
     }
 

@@ -7,22 +7,16 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.PracticeFormsTestPage;
+import sharedData.SharedData;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-public class PracticeFormTest {
-    public WebDriver driver;
+public class PracticeFormTest extends SharedData {
 
     @Test
     public void metodaTest() {
-        // deschidem un browser
-        driver = new ChromeDriver();
-        //accesam un url
-        driver.get("https://demoqa.com/");
-        //facem browserul maximise
-        driver.manage().window().maximize();
 
         ElementMethods elementMethods = new ElementMethods(driver);
         PracticeFormsTestPage practiceFormsTestPage = new PracticeFormsTestPage(driver);

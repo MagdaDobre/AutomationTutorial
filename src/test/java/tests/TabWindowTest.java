@@ -11,24 +11,15 @@ import org.testng.annotations.Test;
 import pages.AlertFrameWindowPage;
 import pages.HomePage;
 import pages.TabWindowPage;
+import sharedData.SharedData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabWindowTest {
-    public WebDriver driver;
+public class TabWindowTest extends SharedData {
 
     @Test
     public void metodaTest() {
-        // deschidem un browser
-        driver = new ChromeDriver();
-        //accesam un url
-        driver.get("https://demoqa.com/");
-        //facem browserul maximise
-        driver.manage().window().maximize();
-
-//        ElementMethods elementMethods =  new ElementMethods(driver);
-//        TabMethods tabMethods = new TabMethods(driver);
 
         HomePage homePage = new HomePage(driver);
         homePage.clickAlertFrameWindow();

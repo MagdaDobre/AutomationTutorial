@@ -11,26 +11,15 @@ import org.testng.annotations.Test;
 import pages.AlertFrameWindowPage;
 import pages.AlertPage;
 import pages.HomePage;
+import sharedData.SharedData;
 
 import java.time.Duration;
 
-public class AlertTest {
-    public WebDriver driver;
+public class AlertTest extends SharedData {
 
     @Test
-
     public void metodaTest() {
-        // deschidem un browser
-        driver = new ChromeDriver();
-        //accesam un url
-        driver.get("https://demoqa.com/");
-        //facem browser-ul maximize
-        driver.manage().window().maximize();
-        //wait implicit
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-//        ElementMethods elementMethods = new ElementMethods(driver);
-//        AlertMethods alertMethods = new AlertMethods(driver);
 
         HomePage homePage = new HomePage(driver);
         homePage.clickAlertFrameWindow();
