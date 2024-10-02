@@ -1,41 +1,22 @@
 package tests;
 
-import helpMethods.ElementMethods;
-import helpMethods.FrameMethods;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
+import pages.AlertFrameWindowPage;
+import pages.HomePage;
+import pages.NestedFramePage;
 import sharedData.SharedData;
 
-import java.time.Duration;
-
-public class NestedFRames extends SharedData {
-
+public class NestedFramesTest extends SharedData {
 
     @Test
     public void metodaTest() {
+        HomePage homePage = new HomePage(getDriver());
+        homePage.clickAlertFrameWindow();
 
-        ElementMethods elementMethods = new ElementMethods(driver);
-        FrameMethods frameMethods = new FrameMethods(driver);
+        AlertFrameWindowPage alertFrameWindowPage = new AlertFrameWindowPage(getDriver());
+        alertFrameWindowPage.clickNestedFrameSubMenu();
 
-        WebElement alertsFrameWindowsMenu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("arguments[0].click();", alertsFrameWindowsMenu);
-        elementMethods.clickJSElement(alertsFrameWindowsMenu);
-
-        WebElement framesSubMenu = driver.findElement(By.xpath("//span[text()='Nested Frames']"));
-//        js.executeScript("arguments[0].click();", framesSubMenu);
-        elementMethods.clickJSElement(framesSubMenu);
-
-//        driver.switchTo().frame("frame1");
-        frameMethods.switchToSpecificIFrame("frame1");
-
-        WebElement childIframeElement = driver.findElement(By.tagName("p"));
-        frameMethods.switchToSpecificIFrameByElement(childIframeElement);
-
-        System.out.println(childIframeElement.getText());
+        NestedFramePage nestedFramePage = new NestedFramePage(getDriver());
+        nestedFramePage.dealNestedFrame();
     }
 }

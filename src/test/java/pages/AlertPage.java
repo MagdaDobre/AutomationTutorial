@@ -1,12 +1,8 @@
 package pages;
 
-import helpMethods.AlertMethods;
-import helpMethods.ElementMethods;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class AlertPage extends BasePage {
 
@@ -15,16 +11,16 @@ public class AlertPage extends BasePage {
     }
 
     @FindBy(id = "alertButton")
-    public WebElement okAlertElement;
+    private WebElement okAlertElement;
 
     @FindBy(id = "timerAlertButton")
-    public WebElement timerAlertButtonElement;
+    private WebElement timerAlertButtonElement;
 
     @FindBy(id = "confirmButton")
-    public WebElement confirmAlertElement;
+    private WebElement confirmAlertElement;
 
     @FindBy(id = "promtButton")
-    public WebElement promtAlertElement;
+    private WebElement promtAlertElement;
 
     public void dealAlertProcess(String text) {
         elementMethods.clickJSElement(okAlertElement);

@@ -1,10 +1,8 @@
 package pages;
 
-import helpMethods.ElementMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BasePage{
 
@@ -13,12 +11,17 @@ public class HomePage extends BasePage{
     }
 
     @FindBy(xpath = "//h5[text()= 'Elements']")
-    public WebElement elementsMenu;
+    private WebElement elementsMenu;
 
     @FindBy(xpath = "//h5[text()='Alerts, Frame & Windows']")
-    public WebElement alertsFrameWindowsMenu;
+    private WebElement alertsFrameWindowsMenu;
 
+    @FindBy(xpath = "//h5[text()= 'Forms']")
+    private WebElement formsMenu;
 
+    public void clickFormsMenu() {
+        elementMethods.clickJSElement(formsMenu);
+    }
 
     public void clickAlertFrameWindow(){
         elementMethods.clickJSElement(alertsFrameWindowsMenu);

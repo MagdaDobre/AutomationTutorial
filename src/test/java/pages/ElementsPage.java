@@ -1,11 +1,8 @@
 package pages;
 
-import helpMethods.ElementMethods;
-import helpMethods.TabMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class ElementsPage extends BasePage {
 
@@ -14,7 +11,7 @@ public class ElementsPage extends BasePage {
     }
 
     @FindBy(xpath = "//span[text()='Web Tables']")
-    public WebElement webTablesSubMenu;
+    private WebElement webTablesSubMenu;
 
     public void clickWebTable(){
         elementMethods.clickJSElement(webTablesSubMenu);

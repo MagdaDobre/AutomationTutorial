@@ -1,25 +1,13 @@
 package pages;
 
-import helpMethods.ElementMethods;
-import helpMethods.FrameMethods;
-import helpMethods.TabMethods;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class FramesPage {
-    public WebDriver driver;
-    public ElementMethods elementMethods;
-    public FrameMethods frameMethods;
-
+public class FramesPage extends  BasePage {
 
     public FramesPage(WebDriver driver) {
-        this.driver = driver;
-        elementMethods = new ElementMethods(this.driver);
-        frameMethods = new FrameMethods(driver);
-        PageFactory.initElements(this.driver,this);
+        super(driver);
     }
 
     @FindBy(id = "sampleHeading")
