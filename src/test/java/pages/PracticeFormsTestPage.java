@@ -16,51 +16,51 @@ public class PracticeFormsTestPage extends BasePage {
     }
 
     @FindBy(xpath = "//h5[text()= 'Forms']")
-    public WebElement formsMenu;
+    private WebElement formsMenu;
     @FindBy(xpath = "//span[text()='Practice Form']")
-    public WebElement practiceFormSubMenu;
+    private WebElement practiceFormSubMenu;
     @FindBy(id = "firstName")
-    public  WebElement firstNameElement;
+    private  WebElement firstNameElement;
     @FindBy(id = "lastName")
-    public WebElement lastNameElement;
+    private WebElement lastNameElement;
     @FindBy(id = "userEmail")
-    public WebElement userEmailElement;
+    private WebElement userEmailElement;
     @FindBy(xpath = "//input[@name='gender']/../label")
-    public List<WebElement> genderOptionsList;
+    private List<WebElement> genderOptionsList;
     @FindBy(id = "userNumber")
-    public WebElement mobileNumberElement;
+    private WebElement mobileNumberElement;
     @FindBy(id = "dateOfBirthInput")
-    public WebElement dateOfBirthElement;
+    private WebElement dateOfBirthElement;
     @FindBy(className = "react-datepicker__month-select")
-    public WebElement monthElement;
+    private WebElement monthElement;
     @FindBy(className = "react-datepicker__year-select")
-    public WebElement yearElement;
+    private WebElement yearElement;
     @FindBy(xpath = "//div[@class = 'react-datepicker__month']/div/div[not(contains(@class,'react-datepicker__day--outside-month'))]")
-    public List<WebElement> daysList;
+    private List<WebElement> daysList;
     @FindBy(id = "subjectsInput")
-    public WebElement subjectElement;
+    private WebElement subjectElement;
     @FindBy(xpath = "//div[@id='hobbiesWrapper']//label[@class = 'custom-control-label']")
-    public  List<WebElement> hobbiesOptionsList;
+    private  List<WebElement> hobbiesOptionsList;
     @FindBy(id = "uploadPicture")
-    public WebElement pictureElement;
+    private WebElement pictureElement;
     @FindBy(id = "currentAddress")
-    public WebElement currentAddressElement;
+    private WebElement currentAddressElement;
     @FindBy(xpath = "//div[text()= 'Select State']")
-    public WebElement stateElement;
+    private WebElement stateElement;
     @FindBy(id = "react-select-3-input")
-    public WebElement stateInputElement;
+    private WebElement stateInputElement;
     @FindBy(xpath = "//div[text()= 'Select City']")
-    public WebElement cityElement;
+    private WebElement cityElement;
     @FindBy(id = "react-select-4-input")
-    public WebElement cityInputElement;
+    private WebElement cityInputElement;
     @FindBy(id = "submit")
-    public WebElement submitElement;
+    private WebElement submitElement;
     @FindBy(id = "example-modal-sizes-title-lg")
-    public WebElement thankyouElement;
+    private WebElement thankyouElement;
     @FindBy(xpath = "//table[@class='table table-dark table-striped table-bordered table-hover']//td[1]")
-    public List<WebElement> labelList;
+    private List<WebElement> labelList;
     @FindBy(xpath = "//table[@class='table table-dark table-striped table-bordered table-hover']//td[2]")
-    public List<WebElement> valuesList;
+    private List<WebElement> valuesList;
 
 
 

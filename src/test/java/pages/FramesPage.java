@@ -23,9 +23,9 @@ public class FramesPage {
     }
 
     @FindBy(id = "sampleHeading")
-    public WebElement sampleTextElement;
+    private WebElement sampleTextElement;
     @FindBy(id = "sampleHeading")
-    public WebElement secondSampleTextElement;
+    private WebElement secondSampleTextElement;
 
     public void dealFirstFrame(){
         frameMethods.switchToSpecificIFrame("frame1");

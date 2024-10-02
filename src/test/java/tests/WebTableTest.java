@@ -21,10 +21,10 @@ public class WebTableTest extends SharedData {
     @Test
     public void metodaTest() {
 
-      HomePage homePage = new HomePage(driver);
+      HomePage homePage = new HomePage(getDriver());
       homePage.clickElements();
 
-      ElementsPage elementsPage = new ElementsPage(driver);
+      ElementsPage elementsPage = new ElementsPage(getDriver());
       elementsPage.clickWebTable();
 
 
@@ -100,7 +100,7 @@ public class WebTableTest extends SharedData {
 //      Assert.assertTrue(rowContent.contains(departmentValue),"The last row doesn't contain departament value.");
 
 
-      WebTablePage webTablePage = new WebTablePage(driver);
+      WebTablePage webTablePage = new WebTablePage(getDriver());
       webTablePage.createProcess(firstNameValue, lastNameValue, userEmailValue,ageValue,
               salaryValue, departmentValue, 3);
       //function edit

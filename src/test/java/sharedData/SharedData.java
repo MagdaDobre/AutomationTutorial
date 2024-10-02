@@ -10,7 +10,7 @@ import java.time.Duration;
 public class SharedData {
 
 
-    public WebDriver driver;
+    private WebDriver driver;
 
     @BeforeMethod
     public void setUpEnvironment() {
@@ -23,6 +23,11 @@ public class SharedData {
         //wait implicit
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     @AfterMethod
     public void clearEnvironment(){
         driver.quit();

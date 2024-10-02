@@ -18,22 +18,22 @@ public class NestedFRames extends SharedData {
     @Test
     public void metodaTest() {
 
-        ElementMethods elementMethods = new ElementMethods(driver);
-        FrameMethods frameMethods = new FrameMethods(driver);
+        ElementMethods elementMethods = new ElementMethods(getDriver());
+        FrameMethods frameMethods = new FrameMethods(getDriver());
 
-        WebElement alertsFrameWindowsMenu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
+        WebElement alertsFrameWindowsMenu = getDriver().findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
 //        JavascriptExecutor js = (JavascriptExecutor) driver;
 //        js.executeScript("arguments[0].click();", alertsFrameWindowsMenu);
         elementMethods.clickJSElement(alertsFrameWindowsMenu);
 
-        WebElement framesSubMenu = driver.findElement(By.xpath("//span[text()='Nested Frames']"));
+        WebElement framesSubMenu = getDriver().findElement(By.xpath("//span[text()='Nested Frames']"));
 //        js.executeScript("arguments[0].click();", framesSubMenu);
         elementMethods.clickJSElement(framesSubMenu);
 
 //        driver.switchTo().frame("frame1");
         frameMethods.switchToSpecificIFrame("frame1");
 
-        WebElement childIframeElement = driver.findElement(By.tagName("p"));
+        WebElement childIframeElement = getDriver().findElement(By.tagName("p"));
         frameMethods.switchToSpecificIFrameByElement(childIframeElement);
 
         System.out.println(childIframeElement.getText());
