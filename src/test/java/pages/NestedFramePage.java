@@ -11,10 +11,12 @@ public class NestedFramePage extends BasePage{
 
     @FindBy(xpath = "//iframe[@srcdoc='<p>Child Iframe</p>']")
     private WebElement childIframeElement;
+    @FindBy(tagName = "p")
+    private WebElement childTextElement;
 
     public void dealNestedFrame(){
         frameMethods.switchToSpecificIFrame("frame1");
         frameMethods.switchToSpecificIFrame(childIframeElement);
-        System.out.println(childIframeElement.getText());
+        System.out.println(childTextElement.getText());
     }
 }
