@@ -15,5 +15,6 @@ public class ElementsPage extends BasePage {
 
     public void clickWebTable(){
         elementMethods.clickJSElement(webTablesSubMenu);
+        loggerUtility.infoLog("The user clicks on Web Table subMenu");
     }
 }

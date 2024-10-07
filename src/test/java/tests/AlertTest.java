@@ -4,9 +4,9 @@ import org.testng.annotations.Test;
 import pages.AlertFrameWindowPage;
 import pages.AlertPage;
 import pages.HomePage;
-import sharedData.SharedData;
+import sharedData.Hooks;
 
-public class AlertTest extends SharedData {
+public class AlertTest extends Hooks {
 
     @Test
     public void metodaTest() {

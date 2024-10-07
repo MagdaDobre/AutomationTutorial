@@ -4,9 +4,10 @@ import org.testng.annotations.Test;
 import pages.ElementsPage;
 import pages.HomePage;
 import pages.WebTablePage;
-import sharedData.SharedData;
+import sharedData.Hooks;
 
-public class WebTableTest extends SharedData {
+public class WebTableTest extends Hooks {
+
     @Test
     public void metodaTest() {
 
@@ -36,6 +37,5 @@ public class WebTableTest extends SharedData {
 
         webTablePage.editProcess(editFirstNameValue, editLastNameValue, editEmailValue, editAgeValue, editSalaryValue, editDepartmentValue, 3);
         webTablePage.deleteProcess(3);
-        webTablePage.quitMethod();
     }
 }

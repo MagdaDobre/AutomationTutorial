@@ -16,7 +16,12 @@ public class NestedFramePage extends BasePage{
 
     public void dealNestedFrame(){
         frameMethods.switchToSpecificIFrame("frame1");
+        loggerUtility.infoLog("The user switches the focus to a specific parent iframe");
+
         frameMethods.switchToSpecificIFrame(childIframeElement);
+        loggerUtility.infoLog("The user switches the focus to a specific child iframe");
+
         System.out.println(childTextElement.getText());
+        loggerUtility.infoLog("The user interacts with an element within iframe");
     }
 }

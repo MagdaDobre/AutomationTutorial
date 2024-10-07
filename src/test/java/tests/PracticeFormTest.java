@@ -7,12 +7,13 @@ import org.testng.annotations.Test;
 import pages.FormsPage;
 import pages.HomePage;
 import pages.PracticeFormsPage;
+import sharedData.Hooks;
 import sharedData.SharedData;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class PracticeFormTest extends SharedData {
+public class PracticeFormTest extends Hooks {
 
     @Test
     public void metodaTest() {
@@ -40,6 +41,7 @@ public class PracticeFormTest extends SharedData {
         PracticeFormsPage practiceFormsPage = new PracticeFormsPage(getDriver());
         practiceFormsPage.fillEntireForm(firstNameValue, lastNameValue, userEmailValue, genderValue,mobileNumberlValue,monthValue,yearValue,dayValue,
                 subjectValues,hobbiesValues,pathFile,currentAddressValue,stateValue,cityValue);
+
         practiceFormsPage.validateFormValues(firstNameValue,lastNameValue,userEmailValue,genderValue,
                 mobileNumberlValue,subjectValues,hobbiesValues,pathFile,currentAddressValue,stateValue,cityValue);
     }

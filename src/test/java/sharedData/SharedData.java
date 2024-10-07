@@ -11,8 +11,7 @@ public class SharedData {
 
     private WebDriver driver;
 
-    @BeforeMethod
-    public void setUpEnvironment() {
+    public void setUpDriver() {
         driver = new ChromeDriver();
         driver.get("https://demoqa.com/");
         driver.manage().window().maximize();
@@ -23,8 +22,7 @@ public class SharedData {
         return driver;
     }
 
-    @AfterMethod
-    public void clearEnvironment(){
+    public void quitDriver(){
         driver.quit();
     }
 }
