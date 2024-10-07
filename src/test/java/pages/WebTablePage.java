@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.WebTableModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -50,32 +51,30 @@ public class WebTablePage extends BasePage{
     @FindBy(id = "delete-record-4")
     private WebElement deleteElement;
 
-    public void createProcess(String firstNameValue,String lastNameValue, String userEmailValue,
-                          String ageValue,String salaryValue,String departmentValue,
-                          int tableSize){
+    public void createProcess(WebTableModel testData, int tableSize){
         Assert.assertEquals(tableContentList.size(),tableSize,"Default size for table is not " + tableSize);
         loggerUtility.infoLog("The user validates the size of table content to be " +tableSize);
 
         elementMethods.clickElement(addElement);
         loggerUtility.infoLog("The user clicks on Add Element button");
 
-        elementMethods.fillElement(firstNameElement,firstNameValue);
-        loggerUtility.infoLog("The user fills First Name field with " + firstNameValue + " value");
+        elementMethods.fillElement(firstNameElement,testData.getFirstName());
+        loggerUtility.infoLog("The user fills First Name field with " + testData.getFirstName() + " value");
 
-        elementMethods.fillElement(lastNameElement,lastNameValue);
-        loggerUtility.infoLog("The user fills Last Name field with " + lastNameValue + " value");
+        elementMethods.fillElement(lastNameElement,testData.getLastName());
+        loggerUtility.infoLog("The user fills Last Name field with " + testData.getLastName() + " value");
 
-        elementMethods.fillElement(userEmailElement,userEmailValue);
-        loggerUtility.infoLog("The user fills User Email field with " + userEmailValue + " value");
+        elementMethods.fillElement(userEmailElement,testData.getUserEmail());
+        loggerUtility.infoLog("The user fills User Email field with " + testData.getUserEmail() + " value");
 
-        elementMethods.fillElement(ageElement,ageValue);
-        loggerUtility.infoLog("The user fills Age field with " + ageValue + " value");
+        elementMethods.fillElement(ageElement,testData.getAge());
+        loggerUtility.infoLog("The user fills Age field with " + testData.getAge() + " value");
 
-        elementMethods.fillElement(salaryElement,salaryValue);
-        loggerUtility.infoLog("The user fills Salary field with " + salaryValue + " value");
+        elementMethods.fillElement(salaryElement,testData.getSalary());
+        loggerUtility.infoLog("The user fills Salary field with " + testData.getSalary() + " value");
 
-        elementMethods.fillElement(departmentElement,departmentValue);
-        loggerUtility.infoLog("The user fills Department field with " + departmentValue + " value");
+        elementMethods.fillElement(departmentElement,testData.getDepartment());
+        loggerUtility.infoLog("The user fills Department field with " + testData.getDepartment() + " value");
 
         elementMethods.clickElement(submitElement);
         loggerUtility.infoLog("The user clicks on Submit button");
@@ -84,48 +83,46 @@ public class WebTablePage extends BasePage{
         loggerUtility.infoLog("The user validates the size of table content to be " +tableSize + 1);
 
         String rowContent = newTableContentList.get(tableSize).getText();
-        Assert.assertTrue(rowContent.contains(firstNameValue),"The last row doesn't contain first name value.");
-        loggerUtility.infoLog("The user validates the presence of " + firstNameValue + " value into table content");
+        Assert.assertTrue(rowContent.contains(testData.getFirstName()),"The last row doesn't contain first name value.");
+        loggerUtility.infoLog("The user validates the presence of " + testData.getFirstName() + " value into table content");
 
-        Assert.assertTrue(rowContent.contains(lastNameValue),"The last row doesn't contain last name value.");
-        loggerUtility.infoLog("The user validates the presence of " + lastNameValue + " value into table content");
+        Assert.assertTrue(rowContent.contains(testData.getLastName()),"The last row doesn't contain last name value.");
+        loggerUtility.infoLog("The user validates the presence of " + testData.getLastName() + " value into table content");
 
-        Assert.assertTrue(rowContent.contains(userEmailValue),"The last row doesn't contain user email value.");
-        loggerUtility.infoLog("The user validates the presence of " + userEmailValue + " value into table content");
+        Assert.assertTrue(rowContent.contains(testData.getUserEmail()),"The last row doesn't contain user email value.");
+        loggerUtility.infoLog("The user validates the presence of " + testData.getUserEmail() + " value into table content");
 
-        Assert.assertTrue(rowContent.contains(ageValue),"The last row doesn't contain age value.");
-        loggerUtility.infoLog("The user validates the presence of " + ageValue + " value into table content");
+        Assert.assertTrue(rowContent.contains(testData.getAge()),"The last row doesn't contain age value.");
+        loggerUtility.infoLog("The user validates the presence of " + testData.getAge() + " value into table content");
 
-        Assert.assertTrue(rowContent.contains(salaryValue),"The last row doesn't contain salary value.");
-        loggerUtility.infoLog("The user validates the presence of " + salaryValue + " value into table content");
+        Assert.assertTrue(rowContent.contains(testData.getSalary()),"The last row doesn't contain salary value.");
+        loggerUtility.infoLog("The user validates the presence of " + testData.getSalary() + " value into table content");
 
-        Assert.assertTrue(rowContent.contains(departmentValue),"The last row doesn't contain departament value.");
-        loggerUtility.infoLog("The user validates the presence of " + departmentValue + " value into table content");
+        Assert.assertTrue(rowContent.contains(testData.getDepartment()),"The last row doesn't contain departament value.");
+        loggerUtility.infoLog("The user validates the presence of " + testData.getDepartment() + " value into table content");
     }
 
-    public void editProcess(String editFirstNameValue,String editLastNameValue, String editEmailValue,
-                            String editAgeValue,String editSalaryValue,
-                            String editDepartmentValue, int tableSize){
+    public void editProcess(WebTableModel testData, int tableSize){
         elementMethods.clickJSElement(editElement);
         loggerUtility.infoLog("The user clicks on Edit button");
 
-        elementMethods.clearEditElement(editFirstNameElement, editFirstNameValue);
-        loggerUtility.infoLog("The user clears and fills the First Name field with " + editFirstNameValue + " value");
+        elementMethods.clearEditElement(editFirstNameElement, testData.getEditFirstName());
+        loggerUtility.infoLog("The user clears and fills the First Name field with " + testData.getEditFirstName() + " value");
 
-        elementMethods.clearEditElement(editLastNameElement, editLastNameValue);
-        loggerUtility.infoLog("The user clears and fills the Last Name field with " + editLastNameValue + " value");
+        elementMethods.clearEditElement(editLastNameElement, testData.getEditLastName());
+        loggerUtility.infoLog("The user clears and fills the Last Name field with " + testData.getEditLastName() + " value");
 
-        elementMethods.clearEditElement(editEmailElement, editEmailValue);
-        loggerUtility.infoLog("The user clears and fills the Email field with " + editEmailValue + " value");
+        elementMethods.clearEditElement(editEmailElement, testData.getEditEmail());
+        loggerUtility.infoLog("The user clears and fills the Email field with " + testData.getEditEmail() + " value");
 
-        elementMethods.clearEditElement(editAgeElement, editAgeValue);
-        loggerUtility.infoLog("The user clears and fills the Age field with " + editAgeValue + " value");
+        elementMethods.clearEditElement(editAgeElement, testData.getEditAge());
+        loggerUtility.infoLog("The user clears and fills the Age field with " + testData.getEditAge() + " value");
 
-        elementMethods.clearEditElement(editSalaryElement, editSalaryValue);
-        loggerUtility.infoLog("The user clears and fills the Salary field with " + editSalaryValue + " value");
+        elementMethods.clearEditElement(editSalaryElement, testData.getEditSalary());
+        loggerUtility.infoLog("The user clears and fills the Salary field with " + testData.getEditSalary() + " value");
 
-        elementMethods.clearEditElement(editDepartmentElement, editDepartmentValue);
-        loggerUtility.infoLog("The user clears and fills the Department field with " + editDepartmentValue + " value");
+        elementMethods.clearEditElement(editDepartmentElement, testData.getEditDepartment());
+        loggerUtility.infoLog("The user clears and fills the Department field with " + testData.getEditDepartment() + " value");
 
         elementMethods.clickElement(submitElement);
         loggerUtility.infoLog("The user clicks on Submit element");
@@ -135,23 +132,23 @@ public class WebTablePage extends BasePage{
 
         String rowContent = newTableContentList.get(tableSize).getText();
         System.out.println(rowContent);
-        Assert.assertTrue(rowContent.contains(editFirstNameValue),"The last row doesn't contain first name value.");
-        loggerUtility.infoLog("The user validates the presence of " + editFirstNameValue + " value into table content");
+        Assert.assertTrue(rowContent.contains(testData.getEditFirstName()),"The last row doesn't contain first name value.");
+        loggerUtility.infoLog("The user validates the presence of " + testData.getEditFirstName() + " value into table content");
 
-        Assert.assertTrue(rowContent.contains(editLastNameValue),"The last row doesn't contain last name value.");
-        loggerUtility.infoLog("The user validates the presence of " + editLastNameValue + " value into table content");
+        Assert.assertTrue(rowContent.contains(testData.getEditLastName()),"The last row doesn't contain last name value.");
+        loggerUtility.infoLog("The user validates the presence of " + testData.getEditLastName() + " value into table content");
 
-        Assert.assertTrue(rowContent.contains(editEmailValue),"The last row doesn't contain user email value.");
-        loggerUtility.infoLog("The user validates the presence of " + editEmailValue + " value into table content");
+        Assert.assertTrue(rowContent.contains(testData.getEditEmail()),"The last row doesn't contain user email value.");
+        loggerUtility.infoLog("The user validates the presence of " + testData.getEditEmail() + " value into table content");
 
-        Assert.assertTrue(rowContent.contains(editAgeValue),"The last row doesn't contain age value.");
-        loggerUtility.infoLog("The user validates the presence of " + editAgeValue + " value into table content");
+        Assert.assertTrue(rowContent.contains(testData.getEditAge()),"The last row doesn't contain age value.");
+        loggerUtility.infoLog("The user validates the presence of " + testData.getEditAge() + " value into table content");
 
-        Assert.assertTrue(rowContent.contains(editSalaryValue),"The last row doesn't contain salary value.");
-        loggerUtility.infoLog("The user validates the presence of " + editSalaryValue + " value into table content");
+        Assert.assertTrue(rowContent.contains(testData.getEditSalary()),"The last row doesn't contain salary value.");
+        loggerUtility.infoLog("The user validates the presence of " + testData.getEditSalary() + " value into table content");
 
-        Assert.assertTrue(rowContent.contains(editDepartmentValue),"The last row doesn't contain departament value.");
-        loggerUtility.infoLog("The user validates the presence of " + editDepartmentValue + " value into table content");
+        Assert.assertTrue(rowContent.contains(testData.getEditDepartment()),"The last row doesn't contain departament value.");
+        loggerUtility.infoLog("The user validates the presence of " + testData.getEditDepartment() + " value into table content");
     }
 
     public void deleteProcess(int tableSize){
