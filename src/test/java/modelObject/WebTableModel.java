@@ -1,12 +1,6 @@
 package modelObject;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-public class WebTableModel {
+public class WebTableModel extends BaseModel {
     // User details
     private String firstName;
     private String lastName;
@@ -23,17 +17,8 @@ public class WebTableModel {
     private String editSalary;
     private String editDepartment;
 
-    public WebTableModel(String jsonFilePath){
-        populateObject(jsonFilePath);
-    }
-
-    public void populateObject(String jsonFilePath) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            objectMapper.readerForUpdating(this).readValue(Files.readAllBytes(Paths.get(jsonFilePath)));
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception as needed
-        }
+    public WebTableModel(String jsonFilePath) {
+        super(jsonFilePath);
     }
 
     // Getters and Setters
