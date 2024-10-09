@@ -1,5 +1,6 @@
 package pages;
 
+import modelObject.PracticeFormModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -62,14 +63,11 @@ public class PracticeFormsPage extends BasePage {
     @FindBy(xpath = "//table[@class='table table-dark table-striped table-bordered table-hover']//td[2]")
     private List<WebElement> valuesList;
 
-    public void fillEntireForm(String firstNameValue,String lastNameValue,String userEmailValue,String genderValue,
-                               String mobileNumberlValue, String monthValue, String yearValue, String dayValue,
-                               List<String> subjectValues,List<String> hobbiesValues, String pathFile,
-                               String currentAddressValue, String stateValue, String cityValue){
-        elementMethods.fillElement(firstNameElement,firstNameValue);
-        elementMethods.fillElement(lastNameElement,lastNameValue);
-        elementMethods.fillElement(userEmailElement,userEmailValue);
-        switch (genderValue) {
+    public void fillEntireForm(PracticeFormModel testData){
+        elementMethods.fillElement(firstNameElement,testData.getFirstName());
+        elementMethods.fillElement(lastNameElement,testData.getLastName());
+        elementMethods.fillElement(userEmailElement,testData.getUserEmail());
+        switch (testData.getGender()) {
             case "Male":
                 elementMethods.clickJSElement(genderOptionsList.get(0));
                 break;
@@ -80,43 +78,41 @@ public class PracticeFormsPage extends BasePage {
                 elementMethods.clickJSElement(genderOptionsList.get(2));
                 break;
         }
-        elementMethods.fillElement(mobileNumberElement,mobileNumberlValue);
+        elementMethods.fillElement(mobileNumberElement,testData.getMobileNumber());
 
         elementMethods.clickJSElement(dateOfBirthElement);
-        elementMethods.selectDropDownElement(monthElement,monthValue);
-        elementMethods.selectDropDownElement(yearElement,yearValue);
+        elementMethods.selectDropDownElement(monthElement,testData.getMonth());
+        elementMethods.selectDropDownElement(yearElement,testData.getYear());
 
         for (int index = 0; index < daysList.size();index++){
-            if (daysList.get(index).getText().equals(dayValue)){
+            if (daysList.get(index).getText().equals(testData.getDay())){
                 elementMethods.clickElement(daysList.get(index));
                 break;
             }
         }
 
-        for (int index = 0; index < subjectValues.size(); index++) {
-            elementMethods.fillPressElement(subjectElement,subjectValues.get(index), Keys.ENTER);
+        for (int index = 0; index < testData.getSubjects().size(); index++) {
+            elementMethods.fillPressElement(subjectElement,testData.getSubjects().get(index), Keys.ENTER);
         }
 
         for (int index = 0; index < hobbiesOptionsList.size(); index++) {
             String currentText = hobbiesOptionsList.get(index).getText();
-            if (hobbiesValues.contains(currentText)) {
+            if (testData.getHobbies().contains(currentText)) {
                 elementMethods.clickJSElement(hobbiesOptionsList.get(index));
             }
         }
 
-        File file = new File(pathFile);
+        File file = new File(testData.getPathFile());
         elementMethods.fillElement(pictureElement,file.getAbsolutePath());
-        elementMethods.fillElement(currentAddressElement, currentAddressValue);
+        elementMethods.fillElement(currentAddressElement, testData.getCurrentAddress());
         elementMethods.clickJSElement(stateElement);
-        elementMethods.fillPressElement(stateInputElement,stateValue,Keys.ENTER);
+        elementMethods.fillPressElement(stateInputElement,testData.getState(),Keys.ENTER);
         elementMethods.clickJSElement(cityElement);
-        elementMethods.fillPressElement(cityInputElement,cityValue, Keys.ENTER);
+        elementMethods.fillPressElement(cityInputElement,testData.getCity(), Keys.ENTER);
         elementMethods.clickJSElement(submitElement);
     }
 
-    public void validateFormValues(String firstNameValue, String lastNameValue, String userEmailValue, String genderValue, String mobileNumberlValue,
-                                   List<String> subjectValues, List<String> hobbiesValues, String pathFile, String currentAddressValue,
-                                   String stateValue, String cityValue){
+    public void validateFormValues(PracticeFormModel testData){
         elementMethods.waitVisibleElement(thankyouElement);
         Assert.assertEquals(thankyouElement.getText(),"Thanks for submitting the form");
 
@@ -131,22 +127,21 @@ public class PracticeFormsPage extends BasePage {
         Assert.assertEquals(labelList.get(8).getText(), "Address");
         Assert.assertEquals(labelList.get(9).getText(), "State and City");
 
-        Assert.assertEquals(valuesList.get(0).getText(), firstNameValue + " " + lastNameValue);
-        Assert.assertEquals(valuesList.get(1).getText(), userEmailValue);
-        Assert.assertEquals(valuesList.get(2).getText(), genderValue);
-        Assert.assertEquals(valuesList.get(3).getText(), mobileNumberlValue);
+        Assert.assertEquals(valuesList.get(0).getText(), testData.getFirstName() + " " + testData.getLastName());
+        Assert.assertEquals(valuesList.get(1).getText(), testData.getUserEmail());
+        Assert.assertEquals(valuesList.get(2).getText(), testData.getGender());
+        Assert.assertEquals(valuesList.get(3).getText(), testData.getMobileNumber());
         Assert.assertEquals(valuesList.get(4).getText(), "15 January,2030");
 
-        String subjectValue = String.join(", ", subjectValues);
+        String subjectValue = String.join(", ", testData.getSubjects());
         Assert.assertEquals(valuesList.get(5).getText(), subjectValue);
 
-        String hobbyValue = String.join(", ", hobbiesValues);
+        String hobbyValue = String.join(", ", testData.getHobbies());
         Assert.assertEquals(valuesList.get(6).getText(), hobbyValue);
 
-        File file = new File(pathFile);
+        File file = new File(testData.getPathFile());
         Assert.assertEquals(valuesList.get(7).getText(), file.getName());
-        Assert.assertEquals(valuesList.get(8).getText(), currentAddressValue);
-        Assert.assertEquals(valuesList.get(9).getText(), stateValue +" "+ cityValue);
+        Assert.assertEquals(valuesList.get(8).getText(), testData.getCurrentAddress());
+        Assert.assertEquals(valuesList.get(9).getText(), testData.getState() +" "+ testData.getCity());
     }
-
 }

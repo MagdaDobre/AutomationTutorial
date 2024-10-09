@@ -5,7 +5,6 @@ import pages.AlertFrameWindowPage;
 import pages.FramesPage;
 import pages.HomePage;
 import sharedData.Hooks;
-import sharedData.SharedData;
 
 public class FramesTest extends Hooks {
 

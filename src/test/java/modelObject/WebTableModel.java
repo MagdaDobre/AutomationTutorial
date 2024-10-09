@@ -30,15 +30,8 @@ public class WebTableModel {
     public void populateObject(String jsonFilePath) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            // Read JSON file and directly map it to the current instance
-            WebTableModel populatedModel = objectMapper.readValue(Files.readAllBytes(Paths.get(jsonFilePath)), WebTableModel.class);
-
-            // Use reflection to copy properties
-            for (var field : this.getClass().getDeclaredFields()) {
-                field.setAccessible(true);
-                field.set(this, field.get(populatedModel));
-            }
-        } catch (IOException | IllegalAccessException e) {
+            objectMapper.readerForUpdating(this).readValue(Files.readAllBytes(Paths.get(jsonFilePath)));
+        } catch (IOException e) {
             e.printStackTrace(); // Handle the exception as needed
         }
     }
