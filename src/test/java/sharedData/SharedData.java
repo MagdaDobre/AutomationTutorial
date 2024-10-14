@@ -31,9 +31,6 @@ public class SharedData {
                 driver = chromeService.getDriver();
                 break;
         }
-
-        Capabilities caps = ((RemoteWebDriver) driver).getCapabilities();
-        System.out.println("!!!!!!!!! Browser name: " + caps.getBrowserName());
     }
 
     public WebDriver getDriver() {
