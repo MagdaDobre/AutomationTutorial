@@ -1,5 +1,6 @@
 package sharedData.browserService;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,6 +9,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 
 import java.time.Duration;
 
+@Getter
 public class EdgeService implements BrowserService{
     private WebDriver driver;
 
@@ -32,9 +34,5 @@ public class EdgeService implements BrowserService{
         options.addArguments("--disable-dev-shm-usage"); // Prevents memory issues
         options.addArguments("--window-size=1920,1080"); // Set a default window size
         return options;
-    }
-
-    public WebDriver getDriver() {
-        return driver;
     }
 }

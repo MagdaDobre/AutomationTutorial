@@ -9,16 +9,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class BasePage {
-    public WebDriver driver;
-    public LoggerUtility loggerUtility;
-    public ElementMethods elementMethods;
-    public AlertMethods alertMethods;
-    public FrameMethods frameMethods;
-    public TabMethods tabMethods;
+    protected WebDriver driver;
+    protected ElementMethods elementMethods;
+    protected AlertMethods alertMethods;
+    protected FrameMethods frameMethods;
+    protected TabMethods tabMethods;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        loggerUtility = new LoggerUtility();
         elementMethods = new ElementMethods(this.driver);
         alertMethods = new AlertMethods(this.driver);
         frameMethods = new FrameMethods(driver);

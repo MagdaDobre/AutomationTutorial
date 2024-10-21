@@ -1,17 +1,11 @@
 package sharedData;
 
-import org.openqa.selenium.Capabilities;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import sharedData.browserService.ChromeService;
 import sharedData.browserService.EdgeService;
 
-import java.time.Duration;
-
+@Getter
 public class SharedData {
 
     private WebDriver driver;
@@ -32,11 +26,6 @@ public class SharedData {
                 break;
         }
     }
-
-    public WebDriver getDriver() {
-        return driver;
-    }
-
     public void quitDriver(){
         driver.quit();
     }

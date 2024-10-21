@@ -1,5 +1,6 @@
 package pages;
 
+import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +16,6 @@ public class ElementsPage extends BasePage {
 
     public void clickWebTable(){
         elementMethods.clickJSElement(webTablesSubMenu);
-        loggerUtility.infoLog("The user clicks on Web Table subMenu");
+        LoggerUtility.infoLog("The user clicks on Web Table subMenu");
     }
 }

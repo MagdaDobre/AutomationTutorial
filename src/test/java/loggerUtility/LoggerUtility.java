@@ -5,21 +5,21 @@ import org.apache.logging.log4j.Logger;
 
 public class LoggerUtility {
 
-    private Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
-    public void startTest(String testName){
+    public static void startTest(String testName){
         logger.info("********************* EXECUTION STARTED: " + testName + " *********************");
     }
 
-    public void infoLog(String message){
+    public static void infoLog(String message){
         logger.info(message);
     }
 
-    public void errorLog(String message){
+    public static void errorLog(String message){
         logger.error(message);
     }
 
-    public void finishTest(String testName){
+    public static void finishTest(String testName){
         logger.info("********************* EXECUTION FINISHED: " + testName + " *********************");
     }
 }
